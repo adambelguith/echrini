@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style type="text/css">
+        .button {
+            background-color: #08a5ee; /* Green */
+            border: none;
+            color: white;
+            padding: 20px 50px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+        
+        .button2 {
+          box-shadow: 0 8px 16px 0 rgb(255, 255, 255), 0 6px 20px 0 rgb(247, 244, 244);
+        }
+
+        .button2:hover {
+          box-shadow: 0 12px 16px 0 rgba(121, 115, 115, 0.678),0 17px 50px 0 rgba(100, 95, 95, 0.644);
+          color:rgb(255, 241, 241);
+        }
+
+
+        input,textarea {
+            margin-left: 60px;
+            background-color: #e0f1f7c9;
+            border-radius: 50px !important;
+            padding: 12px 15px 12px 15px !important;
+            width: 100%;
+            box-sizing: border-box;
+            border: none !important;
+            border: 1px solid #F3E5F5 !important;
+            font-size: 16px !important;
+            color: #000 !important;
+            font-weight: 400
+        }
+        .input1{
+            margin-bottom: 35px;
+        }
+
+        input:focus,
+        textarea:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: 1px solid #D500F9 !important;
+            outline-width: 0;
+            font-weight: 400
+        }
+
+        button:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline-width: 0
+        }
+
+        #logo {
+            width: 130px;
+            height: 60px
+        }
+
+
+        ::placeholder {
+            color: #000 !important;
+            opacity: 1
+        }
+
+        :-ms-input-placeholder {
+            color: #000 !important
+        }
+
+        ::-ms-input-placeholder {
+            color: #000 !important
+        }
+
+        .form-control-label {
+            font-size: 18px;
+            margin-left: 75px;
+            color:#08a5ee;
+        }
+
+        .msg-info {
+            padding-left: 15px;
+            margin-bottom: 30px
+        }
+
+        .button {
+            background-color: #08a5ee; /* Green */
+            border: none;
+            color: white;
+            padding: 20px 120px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 30px 90px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+        
+        .button2 {
+          box-shadow: 0 8px 16px 0 rgb(255, 255, 255), 0 6px 20px 0 rgb(247, 244, 244);
+          border-radius:25px;
+        }
+
+        .button2:hover {
+          box-shadow: 0 12px 16px 0 rgba(121, 115, 115, 0.678),0 17px 50px 0 rgba(100, 95, 95, 0.644);
+          color:rgb(255, 241, 241);
+        }
+
+
+        .btn-white {
+            border-radius: 50px;
+            margin-left:5px;
+            color: #369dfd;
+            background-color: #fff;
+            padding: 8px 35px;
+            cursor: pointer;
+            border: 2px solid #4ba3f5 !important;
+            text-decoration: none;
+        }
+        .text-muted{
+            margin-left: 80px;
+            margin-top: -30px;
+        }
+        .text-center{
+            margin-left: 80px;
+            margin-bottom: 30px;
+
+        }
+
+
+    </style>
+</head>
+<body >
+    <div class="inner">
+        <div class="left">
+            <img src="img/logo.png" alt="Logo" id="logo"> 
+
+            <div class="row justify-content-center my-auto">
+                <div class="col-md-8 col-10 my-5">
+                    <div class="form-group"> <label class="form-control-label text-muted">Username</label> <input type="text" id="email" name="email" placeholder="username or email" class="form-control input1"> </div>
+                    <div class="form-group"> <label class="form-control-label text-muted">Password</label> <input type="password" id="password" name="psw" placeholder="Password" class="form-control"> </div>
+                    <div class="row justify-content-center my-2"> <a href="#"><small class="text-muted">Forgot Password?</small></a> </div>
+                    <div class="row justify-content-center my-3 px-3"> <button class="button button2" onClick="loginbuyer()">Login </button> </div>
+                    
+                </div>
+            </div>
+            <div class="bottom text-center mb-5">
+                <p href="#" class="sm-text mx-auto mb-3">Don't have an account?<a href="signupbuyer.html" class="btn btn-white ml-2">Create new</a></p>
+            </div>
+        </div>
+        <div class="right">
+            <img src="istockphoto-1070373388-612x612.jpg" alt="bgcolor">
+        </div>
+    </div>
+
+    
+
+<script>
+    function loginbuyer(){
+        var url = "http://127.0.0.1:3000/buyers"; //definir la collection a manupiler
+        var email = document.getElementById("email").value; // récupération de la email saisir dans notre code html
+        var password = document.getElementById("password").value;// récupération de la password saisir dans notre code html
+        var xhr = new XMLHttpRequest(); // definir une request de connection standard js
+        xhr.open("GET", url, true); // choisir la méthode get comme une méthode d'accès au serveur et récupérer les données .
+        xhr.setRequestHeader('Content-type','application/json; charset=utf-8'); // choisir l'encodage utf-8 pour que la resultat retourne peux avoir différents format de text comme les côté , les accent …..
+        xhr.onload = function () { // load les données à partir de la serveur -> début connection
+            var buyers = JSON.parse(xhr.responseText); // conversion des données en format json
+            if (xhr.readyState == 4 && xhr.status == "200") { // if la status retourné par la serveur est 200 donc ont dans le cas succes
+                access = false; // définir une variable access par défaut avec la valeur false
+                /* bouclé la liste des utilisateurs */
+                for(i=0; i<buyers.length; i++){
+                    if (buyers[i].email == email && buyers[i].password == password){ // if les données recuperer et la valeur auctual dans la base sont égaux alors en changer access a true .
+                        access = true ;
+                        if (typeof(Storage) !== "undefined") 
+                            {
+                            	// Store
+                            	localStorage.setItem("username", buyers[i].username);
+                            	localStorage.setItem("id", buyers[i]._id);
+                            }
+                            else
+                            {
+                            	document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+                            }
+                        }
+                }
+                // si la variable accès contient true on est autorisé à accéder.
+                if (access){
+                    console.log(xhr);
+                    location.replace("index.html");
+                }
+                else
+                {
+                    alert("Invalid Login OR Password");
+                }
+            } 
+            else
+            {
+                alert("Error Server Connection");
+            }
+        }
+        xhr.send();
+    }
+</script>
+</body>
+</html>
